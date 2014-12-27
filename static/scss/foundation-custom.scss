@@ -1,0 +1,8 @@
+// Make sure the charset it set properly
+@charset "UTF-8";
+
+// Import Foundation and its components
+@import
+    "../../bower_components/foundation/scss/normalize.scss",
+    "foundation-settings.scss",
+    "../../bower_components/foundation/scss/foundation.scss";
