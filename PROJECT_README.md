@@ -38,7 +38,7 @@ $ grunt build
 
 ### Configured Grunt Tasks
 
-To compile and minify styles, and copy over js dependencies (if necessary)
+To compile and minify styles, and copy over js dependencies and images (if necessary)
 
 ```
 $ grunt build
@@ -48,6 +48,30 @@ To run the `build` task above, but conitnue to watch for changes
 
 ```
 $ grunt
+```
+
+## Using SVGStore
+
+To utilize the svg spriting system place the following in the markup. This will hold the defined svgs.
+
+```
+<div id="svg-defs" style="display:none"></div>
+```
+
+To reference the svgs in the sprite
+
+```
+<svg><use xlink:href="#element-elementname" /></svg>
+```
+
+Be sure to load the svg sprite into the definition element (jQuery)
+
+```
+<script src="static/js/jquery.min.js"></script>
+<script type="text/javascript">
+    // Load SVG
+    $("#svg-defs").load("static/svg/svg-defs.svg");
+</script>
 ```
 
 ## Version

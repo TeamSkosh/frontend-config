@@ -65,6 +65,24 @@ module.exports = function(grunt) {
             }
         },
 
+        svgstore: {
+          options: {
+            prefix : "element-",
+            cleanup: false,
+            symbol: {
+              width: "100%"
+            },
+            svg: {
+              style: "display: none;"
+            }
+          },
+          default: {
+            files: {
+              "static/svg/svg-defs.svg": ["static/svg/elements/*.svg"]
+            }
+          }
+        },
+
         watch: {
             foundation: {
                 files: ['static/scss/foundation-custom.scss', 'static/scss/_foundation-settings.scss'],
@@ -73,6 +91,10 @@ module.exports = function(grunt) {
             global: {
                 files: ['static/scss/application.scss', 'static/scss/components/*.scss'],
                 tasks: ['sass:global']
+            },
+            svg: {
+              files: ["static/svg/elements/*.svg"],
+              tasks: ["newer:svgstore"]
             }
         }
 
@@ -83,6 +105,7 @@ module.exports = function(grunt) {
     grunt.registerTask('build', [
         'newer:copy:foundation',
         'newer:copy:jquery',
+        'newer:svgstore',
         'sass:foundation',
         'sass:global'
     ]);
